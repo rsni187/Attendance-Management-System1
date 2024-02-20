@@ -1,0 +1,13 @@
+.App{
+  min-height: 100svh;
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.ContentWrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
