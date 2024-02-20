@@ -24,10 +24,11 @@ const ModelProvider = ({ children })=> {
 
     const changeMessage = (message) => {
         setModalData((elem)=>({
-            status: true,
             ...elem,
-            ...message,
+            status: true,
+            ...message
         }));
+        console.log(modalData);
     };
 
     return (

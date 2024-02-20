@@ -57,7 +57,6 @@ const LoginController = () => {
         }
         try{
         const response = await AxiosConfig().post('/users/login',loginData)
-            console.log(response);
             if(signIn({
                              auth: {
                     token: response.data?.accessToken,
@@ -69,7 +68,7 @@ const LoginController = () => {
             )
             ){
                 changeMessage({message:"Login Successfull"})
-                setTimeout(()=>navigation('/'),500)
+                setTimeout(()=>navigation('/'),2000)
                 //send the message here
                 return ;
             }else {
@@ -89,14 +88,14 @@ const LoginController = () => {
         }
     }
 
-    return (
-        <Login
+    return <Login
         submitAction={submitAction}
         loginData={loginData}
         setLoginData={setLoginData}
         error={error}
         />
-    );
+
+
 };
 
 export default LoginController;

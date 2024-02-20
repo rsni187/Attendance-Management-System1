@@ -6,7 +6,11 @@ import LoginController from "./controllers/Auth/LoginController.jsx";
 import MessageModal from "./components/MessageModal.jsx";
 import {useContext} from "react";
 import {ModelContext} from "./Context/ModelContext.jsx";
-import LogoutController from "./controllers/Auth/LogoutController.jsx";
+import {AdminAuth, BasicAuth, StudentAuth, TeacherAuth} from "./middleware/ProtectAuth.jsx";
+import ProfileController from "./controllers/Auth/ProfileController.jsx";
+import StudentRoute from "./routes/StudentRoute.jsx";
+import TeacherRoute from "./routes/TeacherRoute.jsx";
+import AdminRoute from "./routes/AdminRoute.jsx";
 
 function App() {
     const { modalData } = useContext(ModelContext)
@@ -20,12 +24,18 @@ function App() {
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/login' element={<LoginController />} />
-                <Route path='/logout' element={<LogoutController />} />
+                <Route path='/profile' element={<BasicAuth><ProfileController /></BasicAuth>} />
+                <Route path='/student/*' element={<StudentAuth><StudentRoute /></StudentAuth>} />
+                <Route path='/teacher/*' element={<TeacherAuth><TeacherRoute /></TeacherAuth>} />
+                <Route path='/admin/*' element={<AdminAuth><AdminRoute /></AdminAuth>} />
+
             </Routes>
             {modalData.status && <MessageModal />}
         </div>
     </div>
   )
+
+
 }
 
 export default App

@@ -1,5 +1,6 @@
 import Style from './Login.module.css'
 import FormInput from "../../components/FormInput.jsx";
+import FormError from "../../components/FormError.jsx";
 const Login = ({submitAction,loginData,setLoginData,error}) => {
     const userInput = (val)=>{
         setLoginData((elem)=>({...elem,user:val}))
@@ -14,7 +15,7 @@ const Login = ({submitAction,loginData,setLoginData,error}) => {
                     className={`row w-100  `}
                     onSubmit={submitAction}
                 >
-                    <fieldset className={`col-lg-4 p-4 col border border-secondary rounded mx-auto shadow`}>
+                    <fieldset className={`col-lg-4 p-4 col  rounded mx-auto shadow-lg`}>
                     <FormInput
                         name={`user`}
                         label={`Username or Email:`}
@@ -31,9 +32,9 @@ const Login = ({submitAction,loginData,setLoginData,error}) => {
                         change={passwordInput}
                         placeholder={`Enter your password`}
                     />
-                        {error?.status && <p className={`mb-4 bg-danger text-light rounded px-4 py-2`}>{error?.message || ''}</p>}
+                        {error?.status && <FormError message={error.message}/>}
                     <div className={`mb-4 col-lg-6 col-12 d-block mx-auto`}>
-                        <button className={`btn btn-light w-100 border border-secondary`}>Login</button>
+                        <button className={`btn btn-light w-100 border border-secondary shadow-lg`}>Login</button>
                     </div>
                         <p className={`text-secondary text-small `}>For an account please contact an administrator!</p>
                     </fieldset>
