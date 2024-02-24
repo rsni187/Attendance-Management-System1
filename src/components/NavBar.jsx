@@ -1,7 +1,7 @@
 import {Link, useNavigate} from "react-router-dom";
 import useIsAuthenticated from 'react-auth-kit/hooks/useIsAuthenticated';
 import useSignOut from "react-auth-kit/hooks/useSignOut";
-function NavBar(){
+function  NavBar(){
     const isAuthenticated = useIsAuthenticated();
     const Header = "Attendance Management System";
     const signOut = useSignOut()
@@ -28,6 +28,9 @@ function NavBar(){
                         <ul className="navbar-nav justify-content-end align-items-center flex-grow-1 pe-3 gap-4">
                             <li className="nav-item">
                                 <Link className="nav-link active w-100 ms-auto text-secondary" aria-current="page" to={'/'}>Home</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link active w-100 ms-auto text-secondary" aria-current="page" to={'/Classes'}>Classes</Link>
                             </li>
                             {    !isAuthenticated()
                             &&

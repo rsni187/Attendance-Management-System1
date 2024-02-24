@@ -12,6 +12,7 @@ import StudentRoute from "./routes/StudentRoute.jsx";
 import TeacherRoute from "./routes/TeacherRoute.jsx";
 import AdminRoute from "./routes/AdminRoute.jsx";
 
+
 function App() {
     const { modalData } = useContext(ModelContext)
     if(!modalData){
@@ -28,7 +29,6 @@ function App() {
                 <Route path='/student/*' element={<StudentAuth><StudentRoute /></StudentAuth>} />
                 <Route path='/teacher/*' element={<TeacherAuth><TeacherRoute /></TeacherAuth>} />
                 <Route path='/admin/*' element={<AdminAuth><AdminRoute /></AdminAuth>} />
-
             </Routes>
             {modalData.status && <MessageModal />}
         </div>

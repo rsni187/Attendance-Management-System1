@@ -9,6 +9,7 @@ const StudentRoute = () => {
             <Route path='/' element={<Home />} />
             <Route path='/assignments' element={<Home />} />
             <Route path='/classes' element={<Home />} />
+            <Route path='/attendance' element={<Home />} />
             </Routes>
         </DashboardLayout>
     );

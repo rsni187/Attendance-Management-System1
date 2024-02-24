@@ -27,6 +27,11 @@ const DashboardNav = () => {
                     ${location.pathname === '/student/assignments/' || location.pathname === '/student/assignments'?Styles.active:''}
                     `} to="/student/assignments">Assignments</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className={`nav-link py-3 w-100 text-secondary
+                    ${location.pathname === '/student/assignments/' || location.pathname === '/student/attendance'?Styles.active:''}
+                    `} to="/student/assignments">Attendance</Link>
+                        </li>
                     </>
                 }
                 {/*    This is the start of the teacher navigation bar*/}
