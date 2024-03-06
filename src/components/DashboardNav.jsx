@@ -49,8 +49,8 @@ const DashboardNav = () => {
                     <>
                         <li>
                         <Link className={`nav-link py-3 w-100 text-secondary
-                    ${location.pathname === '/admin/users/' || location.pathname === '/student/users'?Styles.active:''}
-                    `} to="/student/assignments">Users</Link>
+                    ${location.pathname === '/admin/users/' || location.pathname === '/admin/users'?Styles.active:''}
+                    `} to="/admin/users">Users</Link>
                         </li>
                     </>
                 }

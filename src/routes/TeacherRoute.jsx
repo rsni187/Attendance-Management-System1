@@ -5,9 +5,11 @@ import DashboardLayout from "../components/DashboardLayout.jsx";
 const TeacherRoute = () => {
     return (
         <DashboardLayout>
+            <div className='container-fluid p-3'>
         <Routes>
             <Route path={'/'} element={<Home/>} />
         </Routes>
+        </div>
         </DashboardLayout>
     );
 };

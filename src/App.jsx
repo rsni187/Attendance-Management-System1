@@ -11,6 +11,7 @@ import ProfileController from "./controllers/Auth/ProfileController.jsx";
 import StudentRoute from "./routes/StudentRoute.jsx";
 import TeacherRoute from "./routes/TeacherRoute.jsx";
 import AdminRoute from "./routes/AdminRoute.jsx";
+import SignupController from './controllers/Auth/SignupController.jsx';
 
 
 function App() {
@@ -25,8 +26,16 @@ function App() {
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/login' element={<LoginController />} />
-                <Route path='/profile' element={<BasicAuth><ProfileController /></BasicAuth>} />
-                <Route path='/student/*' element={<StudentAuth><StudentRoute /></StudentAuth>} />
+                <Route path='/signup' element={<SignupController />} />
+                <Route path='/profile' element={
+                <BasicAuth>
+                    <ProfileController />
+                </BasicAuth>} />
+                <Route path='/student/*' element={
+                <StudentAuth>
+                    <StudentRoute />
+                 </StudentAuth>
+                } />
                 <Route path='/teacher/*' element={<TeacherAuth><TeacherRoute /></TeacherAuth>} />
                 <Route path='/admin/*' element={<AdminAuth><AdminRoute /></AdminAuth>} />
             </Routes>

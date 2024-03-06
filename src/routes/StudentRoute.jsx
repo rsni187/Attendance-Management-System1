@@ -5,12 +5,14 @@ import DashboardLayout from "../components/DashboardLayout.jsx";
 const StudentRoute = () => {
     return (
         <DashboardLayout>
+            <div className='container-fluid p-3'>
             <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/assignments' element={<Home />} />
             <Route path='/classes' element={<Home />} />
             <Route path='/attendance' element={<Home />} />
             </Routes>
+            </div>
         </DashboardLayout>
     );
 };

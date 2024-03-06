@@ -1,12 +1,10 @@
 import Style from './Login.module.css'
 import FormInput from "../../components/FormInput.jsx";
 import FormError from "../../components/FormError.jsx";
+import { Link } from 'react-router-dom';
 const Login = ({submitAction,loginData,setLoginData,error}) => {
-    const userInput = (val)=>{
-        setLoginData((elem)=>({...elem,user:val}))
-    }
-    const passwordInput = (val)=>{
-        setLoginData((elem)=>({...elem,password:val}))
+    const changeHandler = (val)=>{
+        setLoginData((elem)=>({...elem,[val.target.name]:val.target.value}))
     }
 
     return (
@@ -20,7 +18,7 @@ const Login = ({submitAction,loginData,setLoginData,error}) => {
                         name={`user`}
                         label={`Username or Email:`}
                         value={loginData.user || ''}
-                        change={userInput}
+                        change={changeHandler}
                         placeholder={`Enter your username or enail`}
                     />
 
@@ -29,14 +27,15 @@ const Login = ({submitAction,loginData,setLoginData,error}) => {
                         type="password"
                         label={`Password:`}
                         value={loginData?.password || ''}
-                        change={passwordInput}
+                        change={changeHandler}
                         placeholder={`Enter your password`}
                     />
-                        {error?.status && <FormError message={error.message}/>}
-                    <div className={`mb-4 col-lg-6 col-12 d-block mx-auto`}>
-                        <button className={`btn btn-light w-100 border border-secondary shadow-lg`}>Login</button>
+                        {error?.status && <FormError>{error.message}</FormError>}
+                    <div className={`mb-4 col`}>
+                        <button className={`btn btn-outline-primary w-100 `}>Login</button>
                     </div>
-                        <p className={`text-secondary text-small `}>For an account please contact an administrator!</p>
+                    <p className={`text-secondary text-small mb-2`}>Dont have an account yet? <Link to={"/signup"}>Click here</Link></p>
+                        <p className={`text-secondary text-small `}>If the account is not active, Please contact the administrator!</p>
                     </fieldset>
 
                 </form>

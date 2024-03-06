@@ -38,6 +38,9 @@ function  NavBar(){
                             <li className="nav-item">
                                 <Link className="nav-link btn btn-light border text-secondary" to="/login">Login</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link className="nav-link btn btn-light border text-secondary" to="/signup">Signup</Link>
+                            </li>
                                 </>
                             }
 
