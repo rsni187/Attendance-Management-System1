@@ -88,6 +88,7 @@ const Signup = ({ formData,handleSubmit,changeHandler,error,responseError }) => 
         <FormInput
                 label="Password:"
                 name="password"
+                type={`password`}
                 value={formData.password}
                 change={changeHandler}
                 error={error.password}
@@ -96,6 +97,7 @@ const Signup = ({ formData,handleSubmit,changeHandler,error,responseError }) => 
           <FormInput
                 label="Re-Enter Password:"
                 name="cpassword"
+                type={`password`}
                 value={formData.cpassword}
                 change={changeHandler}
                 error={error.cpassword}

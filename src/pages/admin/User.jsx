@@ -50,7 +50,7 @@ const User = ({ users,handleSearch,deleteUser }) => {
                         <td className="d-flex gap-2">
                           <Link
                             className="btn btn-outline-warning"
-                            to={`/admin/users/edit`}
+                            to={`/admin/users/edit/${dat._id}`}
                           >
                             <EditIcon />
                           </Link>
