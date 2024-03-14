@@ -48,9 +48,24 @@ const DashboardNav = () => {
                     &&
                     <>
                         <li>
-                        <Link className={`nav-link py-3 w-100 text-secondary
-                    ${location.pathname === '/admin/users/' || location.pathname === '/admin/users'?Styles.active:''}
+                            <Link className={`nav-link py-3 w-100 text-secondary
+                    ${location.pathname === '/admin/users/' || location.pathname === '/admin/users' ? Styles.active : ''}
                     `} to="/admin/users">Users</Link>
+                        </li>
+                        <li>
+                            <Link className={`nav-link py-3 w-100 text-secondary
+                    ${location.pathname === '/admin/semester/' || location.pathname === '/admin/semester' ? Styles.active : ''}
+                    `} to="/admin/semester">Semester</Link>
+                        </li>
+                        <li>
+                            <Link className={`nav-link py-3 w-100 text-secondary
+                    ${location.pathname === '/admin/course/' || location.pathname === '/admin/course' ? Styles.active : ''}
+                    `} to="/admin/course">Course</Link>
+                        </li>
+                        <li>
+                            <Link className={`nav-link py-3 w-100 text-secondary
+                    ${location.pathname === '/admin/faculty/' || location.pathname === '/admin/faculty' ? Styles.active : ''}
+                    `} to="/admin/faculty">Faculty</Link>
                         </li>
                     </>
                 }

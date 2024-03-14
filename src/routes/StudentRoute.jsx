@@ -8,7 +8,6 @@ const StudentRoute = () => {
             <div className='container-fluid p-3'>
             <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/assignments' element={<Home />} />
             <Route path='/classes' element={<Home />} />
             <Route path='/attendance' element={<Home />} />
             </Routes>

@@ -28,7 +28,6 @@ const ModelProvider = ({ children })=> {
             status: true,
             ...message
         }));
-        console.log(modalData);
     };
 
     return (

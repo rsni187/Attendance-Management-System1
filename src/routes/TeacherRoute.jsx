@@ -8,6 +8,7 @@ const TeacherRoute = () => {
             <div className='container-fluid p-3'>
         <Routes>
             <Route path={'/'} element={<Home/>} />
+            <Route path={'/attendance'} element={<Home/>} />
         </Routes>
         </div>
         </DashboardLayout>

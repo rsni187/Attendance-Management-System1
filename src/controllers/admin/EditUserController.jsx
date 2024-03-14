@@ -1,8 +1,9 @@
 import EditUser from "../../pages/admin/EditUser.jsx";
 import {useNavigate, useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import AxiosConfig from "../../services/AxiosConfig.jsx";
 import useAuthHeader from "react-auth-kit/hooks/useAuthHeader";
+import {ModelContext} from "../../Context/ModelContext.jsx";
 
 function EditUserController() {
     const values = {
@@ -22,6 +23,7 @@ function EditUserController() {
     const [error,setError]=useState(values);
     const axios = AxiosConfig();
     const authHeader = useAuthHeader();
+    const {changeMessage} = useContext(ModelContext);
     const {id} = useParams();
     const navigate = useNavigate();
     useEffect(()=>{
@@ -46,10 +48,14 @@ function EditUserController() {
 
     const handleSubmit=(elem)=>{
         elem.preventDefault();
-        console.log('prevented')
+        axios.put(`/users/update/${id}`,userData,{headers:{"Authorization":authHeader}})
+            .then((dat)=>{
+                changeMessage({message:dat.data.message});
+            })
+            .catch((err)=>console.error(err))
     }
 
-    return <EditUser userData={userData} handleChange={handleChange} error={error}/>;
+    return <EditUser userData={userData} handleChange={handleChange} handleSubmit={handleSubmit} error={error}/>;
 }
 
 export default EditUserController;
