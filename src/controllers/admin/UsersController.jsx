@@ -27,7 +27,13 @@ const UsersController = () => {
             ;
         }
     };
-  
+    const activeUser = (id,active) =>{
+        axios.put(`/users/activate/${id}`,{"active":!active},{headers:{"Authorization":authHeader}}).then((response)=>{
+            changeMessage({message:response.data.message})
+            axios.get('users/all',{headers:{"Authorization":authHeader}}).then((response)=>setUsers(response.data))
+        }).catch(err=>changeMessage({message:"Please fill out the details of the student before activating the id"}))
+    }
+
 
     useEffect(()=>{
         if(!search.length>0){
@@ -35,9 +41,9 @@ const UsersController = () => {
         }else{
             axios.get(`users/search/${search}`,{headers:{"Authorization":authHeader}}).then((response)=>setUsers(response.data));
         }
-    },[users,search]);
+    },[search]);
 
-    return <User users={users} handleSearch={handleSearch} deleteUser={deleteUser} />;
+    return <User users={users} activeUser={activeUser} handleSearch={handleSearch} deleteUser={deleteUser} />;
 };
 
 export default UsersController;

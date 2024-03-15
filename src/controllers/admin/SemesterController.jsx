@@ -27,12 +27,12 @@ const SemesterController = () => {
         const inputValue = elem.target.elements.search.value;
         setSearch(inputValue);
     }
-    function deleteSemester(faculty){
+    function deleteSemester(semester){
         if(window.confirm('Are you sure you want to delete')){
-            axios.post(`/faculty/delete/${faculty}`,'',{headers:{"Authorization":authHeader}})
+            axios.post(`/semester/delete/${semester}`,'',{headers:{"Authorization":authHeader}})
                 .then((dat)=>{
                     changeMessage({message:dat.data.message});
-                    axios.get('/faculty/all').then((response)=>{
+                    axios.get('/semester/all').then((response)=>{
                         setSemester(response.data);
                     })
                         .catch((error)=>{console.error(error);})

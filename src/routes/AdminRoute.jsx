@@ -7,12 +7,16 @@ import EditUserController from "../controllers/admin/EditUserController.jsx";
 import EditCourseController from "../controllers/admin/EditCourseController.jsx";
 import CreateCourseController from "../controllers/admin/CreateCourseController.jsx";
 import CourseController from "../controllers/admin/CourseController.jsx";
-import FacultyIndex from "../pages/admin/faculty/FacultyIndex.jsx";
 import FacultyController from "../controllers/admin/FacultyController.jsx";
 import CreateFacultyController from "../controllers/admin/CreateFacultyController.jsx";
 import EditFacultyController from "../controllers/admin/EditFacultyController.jsx";
-import SemesterIndex from "../pages/admin/semester/SemesterIndex.jsx";
 import SemesterController from "../controllers/admin/SemesterController.jsx";
+import CreateSemesterController from "../controllers/admin/CreateSemesterController.jsx";
+import EditSemesterController from "../controllers/admin/EditSemesterController.jsx";
+import SubjectController from "../controllers/admin/SubjectController.jsx";
+import CreateSubjectController from "../controllers/admin/CreateSubjectController.jsx";
+import EditSubjectController from "../controllers/admin/EditSubjectController.jsx";
+import ReportController from "../controllers/admin/ReportController.jsx";
 
 const AdminRoute = () => {
     return (
@@ -39,14 +43,17 @@ const AdminRoute = () => {
 
                     {/*starting of semester routing*/}
                     <Route path={'/semester'} element={<SemesterController/>}/>
-                    <Route path={'/semester/create'} element={<SemesterController/>}/>
-                    <Route path={'/semester/edit/:id'} element={<EditUserController/>}/>
+                    <Route path={'/semester/create'} element={<CreateSemesterController/>}/>
+                    <Route path={'/semester/edit/:id'} element={<EditSemesterController/>}/>
                     {/*Ending of semester routing*/}
 
-                    <Route path={'/subject'} element={<EditUserController/>}/>
-                    <Route path={'/subject/create'} element={<EditUserController/>}/>
-                    <Route path={'/subject/edit/:id'} element={<EditUserController/>}/>
-                    <Route path={'/report'} element={<EditUserController/>}/>
+
+                    {/*Starting of the subject */}
+                    <Route path={'/subject'} element={<SubjectController/>}/>
+                    <Route path={'/subject/create'} element={<CreateSubjectController/>}/>
+                    <Route path={'/subject/edit/:id'} element={<EditSubjectController/>}/>
+                    {/*Ending of the subject*/}
+                    <Route path={'/report'} element={<ReportController/>}/>
                 </Routes>
             </div>
         </DashboardLayout>

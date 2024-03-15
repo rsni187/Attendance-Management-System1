@@ -2,7 +2,7 @@ import FormInput from "../../components/FormInput.jsx";
 import FormError from "../../components/FormError.jsx";
 import {Link} from "react-router-dom";
 
-function EditUser({handleSubmit,userData,handleChange,error}) {
+function EditUser({handleSubmit,semester,faculty,course,userData,handleChange,error}) {
     return (
         <main>
             <form onSubmit={handleSubmit}>
@@ -102,6 +102,55 @@ function EditUser({handleSubmit,userData,handleChange,error}) {
                             error={error.cpassword}
                             placeholder={`Re-enter password`}
                         />
+                    </div>
+                    <div className={`row mb-4`}>
+                        <div className={`col`}>
+                        <label htmlFor={`facultyId`} className={`form-label`}>
+                            Faculty
+                        </label>
+                        <select className={`form-control`} name={`facultyId`} id={`facultyId`} value={userData.facultyId}
+                                onChange={handleChange}>
+                            <option value={``} className={`d-none`}>Select faculty</option>
+                            {faculty.length > 0 && faculty.map((faculty) => {
+                                return <option key={faculty._id} value={faculty._id}>{faculty.facultyName}</option>
+                            })}
+                        </select>
+                    </div>
+                    <div className={`col`}>
+                        <label className={`form-label`}>
+                            Course
+                        </label>
+                        <select className={`form-control`} name={`courseId`} id={`courseId`} value={userData.courseId}
+                                onChange={handleChange}>
+                            <option value={``} className={`d-none`}>Select faculty</option>
+                            {course.length > 0 && course.map((dat) => {
+                                return <option key={dat._id} value={dat._id}>{dat.courseName}</option>
+                            })}
+                        </select>
+                    </div>
+                    <div className={`col`}>
+                        <label className={`form-label`}>
+                            Semester
+                        </label>
+                        <select className={`form-control`} name={`semesterId`} id={`semesterId`} value={userData.semesterId}
+                                onChange={handleChange}>
+                            <option value={``} className={`d-none`}>Select faculty</option>
+                            {semester.length > 0 && semester.map((dat) => {
+                                return <option key={dat._id} value={dat._id}>{dat.semesterName}</option>
+                            })}
+                        </select>
+                    </div>
+                    </div>
+                    <div className={`row mb-3`}>
+                        <div className={`col`}>
+                            <label htmlFor={`role`} className={``}>Role</label>
+                            <select onChange={handleChange} name={`role`} id={`role`} className={`form-select`}>
+                                <option value={``} className={`d-none`}>Select Role if you want to change the role</option>
+                                <option value={`admin`}>Admin</option>
+                                <option value={`teacher`}>Teacher</option>
+                                <option value={`student`}>Student</option>
+                            </select>
+                        </div>
                     </div>
                     <div className="row mb-4">
                         <div className="col">
