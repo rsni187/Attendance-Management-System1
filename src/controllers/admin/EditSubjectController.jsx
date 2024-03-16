@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import SubjectForm from "../../pages/admin/subject/SubjectForm.jsx";
 import {useNavigate, useParams} from "react-router-dom";
 import useAuthHeader from "react-auth-kit/hooks/useAuthHeader";
@@ -50,7 +50,17 @@ const EditSubjectController = () => {
             (response)=>{
                 changeMessage({message:response.data.message});
                 navigate('/admin/subject');
-            }).catch(err=>console.error(err))
+            }).catch(err=>console.error(err));
+
+        if(data.startTime && data.endTime){
+            const startTimeSplice = data.startTime.split(':');
+            const endTimeSplice = data.endTime.split(':');
+            let sendTimerData = {
+                startTime:{"hour":startTimeSplice[0],"minute":startTimeSplice[1]},
+                endTime:{"hour":endTimeSplice[1],"minute":endTimeSplice[1]}
+            }
+            axios.put(`subject/time/${id}`,sendTimerData,{headers:{"Authorization":authHeader}});
+        }
     }
 
     const handleChange = (e) => {

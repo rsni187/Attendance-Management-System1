@@ -1,6 +1,9 @@
 import React from 'react';
+import {useLocation} from "react-router-dom";
 
 const SubjectForm = ({handleChange,handleSubmit,data,course,semester,teacher}) => {
+    const location = useLocation();
+
     return (
         <div className={`container`}>
             <div className={`row`}>
@@ -74,6 +77,26 @@ const SubjectForm = ({handleChange,handleSubmit,data,course,semester,teacher}) =
                                 })}
                             </select>
                         </div>
+                        {location.pathname.includes("admin/subject/edit") &&
+                        <div className={`row mb-4`}>
+                            <div className={`col`}>
+                                <label className={`form-label`} htmlFor={`startTime`}>
+                                    Start Time
+                                </label>
+                                <input type={`time`} name={`startTime`} id={`startTime`} value={data.startTime}
+                                       className={`form-control`} onChange={handleChange}
+                                       />
+                            </div>
+                            <div className={`col`}>
+                                <label className={`form-label`} htmlFor={`endDate`}>
+                                    End Time
+                                </label>
+                                <input type={`time`} name={`endTime`} id={`endTime`} value={data.endTime}
+                                       className={`form-control`} onChange={handleChange}
+                                />
+                            </div>
+                        </div>
+                        }
                         <div>
                             <button type={`submit`} className={`btn btn-outline-primary w-100`}>
                                 Submit

@@ -12,10 +12,10 @@ const ReportController = () => {
         endDate:""
     }
     const [data,setData] = useState(form)
+    const [download,setDownload] = useState(null);
     const [subject,setSubject] = useState({});
     const [semester,setSemester] = useState({});
     const authHeader = useAuthHeader();
-    const downloadRef = useRef();
     const axios = AxiosConfig();
     const {changeMessage} = useContext(ModelContext);
 
@@ -38,13 +38,19 @@ const ReportController = () => {
             changeMessage({message:"Please select a subject and semester."})
         }
         let URI = "/attendance/generate";
-        if(data.startDate && data.startDate){
+        if(data.startDate && data.endDate){
             URI = "/attendance/generate/date";
-            changeMessage({message:"Please select a starting date."})
         }
+        console.log(data);
         axios.post(URI,data,{headers:{"Authorization":authHeader}}).then((response)=>{
             // changeMessage({message:response.data.message});
-            console.log(response)
+            axios.get(response.data.filePath, { responseType: 'blob', headers: { "Authorization": authHeader } })
+                .then((res) => {
+                    const blob = new Blob([res.data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+                    const url = window.URL.createObjectURL(blob);
+                    setDownload(url);
+                })
+                .catch(error => console.error("Error downloading XLSX file:", error));
         }).catch(error=>console.error(error))
     }
     const clearDate=()=>{
@@ -55,7 +61,7 @@ const ReportController = () => {
         }))
     }
 
-    return <Report subject={subject} semester={semester} data={data} handleChange={handleChange} handleSubmit={handleSubmit} clearDate={clearDate} downloadRef={downloadRef}/>;
+    return <Report subject={subject} semester={semester} download={download} data={data} handleChange={handleChange} handleSubmit={handleSubmit} clearDate={clearDate}/>;
 };
 
 export default ReportController;

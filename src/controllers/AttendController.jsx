@@ -13,13 +13,14 @@ const AttendController = () => {
     const authHeader = useAuthHeader();
     const navigate = useNavigate();
     useEffect(()=>{
-        axios.get('/subject/all').then(function (response){
+        axios.get('/subject/generate',{headers:{"Authorization":authHeader}}).then(function (response){
             setSubject(response.data);
+            console.log(response.data)
         }).catch((error)=>{console.error(error);})
     },[])
 
     const handleChange = (event) => {
-        const { name, value } = event.target;
+        const { value } = event.target;
         setData(value);
     }
 
@@ -30,7 +31,10 @@ const AttendController = () => {
             changeMessage({message:response.data.message});
             navigate('/');
          }
-     )
+     ).catch(err=>{
+         changeMessage({message:err?.response?.data?.message})
+
+     });
     }
 
     return <AttendPage subject={subject} attendClass={attendClass} handleChange={handleChange}/>;

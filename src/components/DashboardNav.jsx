@@ -35,7 +35,7 @@ const DashboardNav = () => {
                         <li className="nav-item">
                             <Link className={`nav-link py-3 w-100 text-secondary`} to="/teacher/">Home</Link>
                         </li>
-                        <Link to={"/student/attend"} className={`nav-link py-3 w-100 text-secondary 
+                        <Link to={"/teacher/attend"} className={`nav-link py-3 w-100 text-secondary 
                     ${isUrl('teacher/attend') ? Styles.active : ''}
                     `}>
                             Attend Class

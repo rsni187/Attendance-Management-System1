@@ -91,6 +91,7 @@ function EditUserController() {
                     }
                     axios.put(`/users/faculty/assign/${id}`,data,{headers:{"Authorization":authHeader}}).then(
                         response=>{
+                            console.log(response);
                             changeMessage({message:response.data.message});
                         }
                     ).catch(err=>console.error(err))

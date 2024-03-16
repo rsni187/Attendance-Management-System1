@@ -20,7 +20,6 @@ const SubjectController = () => {
         if(search.length === 0){
 
         axios.get('/subject/all',{headers:{"Authorization":authHeader}}).then((response)=>{
-            console.log(response)
             setSubject(response.data);
         })
          .catch((error)=>{console.error(error);})
@@ -29,12 +28,14 @@ const SubjectController = () => {
         }
     },[search])
 
-    const deleteSubject =()=>{
+    const deleteSubject =(id)=>{
         if(window.confirm('Are you sure you want to delete')){
-            axios.post(`/subject/delete/${subject._id}`,'',{headers:{"Authorization":authHeader}})
+            axios.post(`/subject/delete/${id}`,'',{headers:{"Authorization":authHeader}})
          .then((response)=>{
-                setSubject(response.data);
-                changeMessage(response.data.message);
+             axios.get('/subject/all',{headers:{"Authorization":authHeader}}).then((response)=>{
+                 setSubject(response.data);
+             })
+                changeMessage({message:response.data.message});
             })
          .catch((error)=>{console.error(error);})
         }

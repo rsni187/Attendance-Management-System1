@@ -40,7 +40,7 @@ const SemesterIndex = ({handleSearch,semester,deleteSemester}) => {
                                     <tr key={index}>
                                         <th scope="col">{index + 1}</th>
                                         <td>
-                                            {dat.semesterName}
+                                            {dat?.semesterName}
                                         </td>
 
                                         <td className="d-flex gap-2">

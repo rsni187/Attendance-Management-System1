@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Report = ({handleChange,handleSubmit,clearDates,data,downloadRef,subject,semester}) => {
+const Report = ({handleChange,handleSubmit,clearDates,data,downloadRef,subject,semester,download}) => {
     return (
         <div className={`container`}>
             <div className={`raw`}>
@@ -23,8 +23,8 @@ const Report = ({handleChange,handleSubmit,clearDates,data,downloadRef,subject,s
                             </select>
                         </div>
                         <div className={`mb-3`}>
-                            <label htmlFor={`subjectID`} className={`form-label`}>Semester</label>
-                            <select name={`subjectID`} id={`subjectID`} onChange={handleChange}
+                            <label htmlFor={`semesterID`} className={`form-label`}>Semester</label>
+                            <select name={`semesterID`} id={`semesterID`} onChange={handleChange}
                                     className={`form-select`} defaultValue={data.semesterID}>
                                 <option value={``}>
                                     Select Subject
@@ -55,10 +55,11 @@ const Report = ({handleChange,handleSubmit,clearDates,data,downloadRef,subject,s
                             </button>
                         </div>
                         <div className={`mb-3`}>
-                            <a ref={downloadRef} target={`_blank`} type={`submit`}
-                               className={`btn btn-warning w-100 d-none`}>
+                            <a href={download} download="attendence.xlsx"
+                               className={`btn btn-warning w-100 ${download ? "" : "d-none"}`}>
                                 Download
                             </a>
+
                         </div>
                     </form>
                 </div>

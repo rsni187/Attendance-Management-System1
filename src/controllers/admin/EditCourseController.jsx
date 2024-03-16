@@ -38,6 +38,7 @@ const EditCourseController = () => {
         axios.put(`/course/update/${id}`,data,{headers:{"Authorization":authHeader}}).then(
             (response)=>{
                 changeMessage({message:response.data.message});
+                navigate('/admin/course');
             }
         )
     }

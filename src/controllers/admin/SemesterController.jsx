@@ -18,7 +18,7 @@ const SemesterController = () => {
             })
                 .catch((error)=>{console.error(error);})
         }else{
-            axios.get(`semester/search/${search}`,{headers:{"Authorization":authHeader}}).then((response)=>setFaculty(response.data));
+            axios.get(`semester/search/${search}`,{headers:{"Authorization":authHeader}}).then((response)=>setSemester(response.data));
         }
     },[search])
 

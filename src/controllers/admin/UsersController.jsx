@@ -28,10 +28,12 @@ const UsersController = () => {
         }
     };
     const activeUser = (id,active) =>{
-        axios.put(`/users/activate/${id}`,{"active":!active},{headers:{"Authorization":authHeader}}).then((response)=>{
-            changeMessage({message:response.data.message})
-            axios.get('users/all',{headers:{"Authorization":authHeader}}).then((response)=>setUsers(response.data))
-        }).catch(err=>changeMessage({message:"Please fill out the details of the student before activating the id"}))
+        if(window.confirm('Are you sure you want to activate or deactivate user')){
+            axios.put(`/users/activate/${id}`,{"active":!active},{headers:{"Authorization":authHeader}}).then((response)=>{
+                changeMessage({message:response.data.message})
+                axios.get('users/all',{headers:{"Authorization":authHeader}}).then((response)=>setUsers(response.data))
+            }).catch(err=>changeMessage({message:"Please fill out the details of the student before activating the id"}))
+        }
     }
 
 
